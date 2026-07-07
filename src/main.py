@@ -1,8 +1,8 @@
 from preprocess import load_dataset, analyze_dataset, clean_dataset
 
 
-TRAIN_PATH = "../dataset/KDDTrain+.txt"
-TEST_PATH = "../dataset/KDDTest+.txt"
+TRAIN_PATH = "dataset/KDDTrain+.txt"
+TEST_PATH = "dataset/KDDTest+.txt"
 
 
 # Load data
