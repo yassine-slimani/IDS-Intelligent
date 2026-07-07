@@ -1,12 +1,22 @@
-import pandas as pd
+from preprocess import load_dataset, analyze_dataset, clean_dataset
 
-# Load the datasets
-train = pd.read_csv("dataset/KDDTrain+.txt", header=None)
-test = pd.read_csv("dataset/KDDTest+.txt", header=None)
 
-# Display dataset dimensions
-print("Train:", train.shape)
-print("Test:", test.shape)
+TRAIN_PATH = "../dataset/KDDTrain+.txt"
+TEST_PATH = "../dataset/KDDTest+.txt"
 
-# Display the first five rows
-print(train.head())
+
+# Load data
+train, test = load_dataset(TRAIN_PATH, TEST_PATH)
+
+
+# Analyze dataset before cleaning
+analyze_dataset(train, "Training dataset")
+
+
+# Cleaning
+train = clean_dataset(train)
+
+
+# Analyze result
+print("\nAfter cleaning:")
+print(train.shape)
