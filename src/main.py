@@ -5,6 +5,11 @@ from src.data_preprocessing import (
     encode_features,
     normalize_features
 )
+from src.train import (
+    split_train_test,
+    train_random_forest,
+    save_model
+)
 
 
 TRAIN_PATH = "dataset/KDDTrain+.txt"
@@ -64,6 +69,41 @@ X_scaled, scaler = normalize_features(X)
 print("\nAfter normalization:")
 print(X_scaled.shape)
 
+
+# ==========================
+# 8. Split data
+# ==========================
+X_train, X_test, y_train, y_test = split_train_test(
+    X_scaled,
+    y
+)
+
+
+print("\nTraining shape:")
+print(X_train.shape)
+
+print("Testing shape:")
+print(X_test.shape)
+
+
+# ==========================
+# 9. Train model
+# ==========================
+model = train_random_forest(
+    X_train,
+    y_train
+)
+
+
+print("\nModel trained successfully!")
+
+
+# ==========================
+# 10. Save model
+# ==========================
+save_model(model)
+
+print("Model saved!")
 
 # Target information
 print("\nTarget classes:")
