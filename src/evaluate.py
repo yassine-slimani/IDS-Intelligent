@@ -29,7 +29,8 @@ def evaluate_model(model, X_test, y_test):
     print(
         classification_report(
             y_test,
-            y_pred
+            y_pred,
+            zero_division=0
         )
     )
 
