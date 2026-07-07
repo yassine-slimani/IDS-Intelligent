@@ -10,6 +10,7 @@ from src.train import (
     train_random_forest,
     save_model
 )
+from src.evaluate import evaluate_model
 
 
 TRAIN_PATH = "dataset/KDDTrain+.txt"
@@ -104,6 +105,16 @@ print("\nModel trained successfully!")
 save_model(model)
 
 print("Model saved!")
+
+# ==========================
+# 11. Evaluation
+# ==========================
+
+evaluate_model(
+    model,
+    X_test,
+    y_test
+)
 
 # Target information
 print("\nTarget classes:")
