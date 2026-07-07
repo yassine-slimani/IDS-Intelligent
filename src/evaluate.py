@@ -35,11 +35,45 @@ def evaluate_model(model, X_test, y_test):
     )
 
 
-    # Confusion matrix
-    print("\nConfusion Matrix:")
-    print(
-        confusion_matrix(
-            y_test,
-            y_pred
-        )
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.metrics import confusion_matrix
+
+
+def plot_confusion_matrix(model, X_test, y_test):
+
+    y_pred = model.predict(X_test)
+
+    cm = confusion_matrix(
+        y_test,
+        y_pred
     )
+
+    plt.figure(figsize=(14, 10))
+
+    sns.heatmap(
+        cm,
+        annot=True,
+        fmt="d",
+        cmap="Blues",
+        xticklabels=model.classes_,
+        yticklabels=model.classes_
+    )
+
+    plt.xlabel("Predicted Label")
+    plt.ylabel("True Label")
+    plt.title("Confusion Matrix - Random Forest IDS")
+
+    plt.xticks(rotation=45)
+    plt.yticks(rotation=0)
+
+    plt.tight_layout()
+
+    plt.savefig(
+        "results/confusion_matrix.png",
+        dpi=300
+    )
+
+    plt.close()
+
+    print("Confusion matrix saved!")

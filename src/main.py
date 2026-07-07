@@ -11,6 +11,7 @@ from src.train import (
     save_model
 )
 from src.evaluate import evaluate_model
+from src.evaluate import evaluate_model, plot_confusion_matrix
 
 
 TRAIN_PATH = "dataset/KDDTrain+.txt"
@@ -111,6 +112,12 @@ print("Model saved!")
 # ==========================
 
 evaluate_model(
+    model,
+    X_test,
+    y_test
+)
+
+plot_confusion_matrix(
     model,
     X_test,
     y_test
